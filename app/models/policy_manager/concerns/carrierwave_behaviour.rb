@@ -1,5 +1,4 @@
 # -*- encoding : utf-8 -*-
-require "carrierwave"
 
 module PolicyManager::Concerns::CarrierwaveBehaviour
   extend ActiveSupport::Concern
