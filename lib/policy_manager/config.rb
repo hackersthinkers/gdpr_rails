@@ -11,7 +11,9 @@ module PolicyManager
                    :error_notifier,
                    :user_resource,
                    :admin_user_resource,
-                   :paperclip
+                   :paperclip,
+                   :carrierwave,
+                   :attachment_storage
 
     def self.setup
       @@rules = []

@@ -1,0 +1,129 @@
+en:
+  terms_app:
+    user_behavior:
+      needs_confirmation: needs confirmation
+    title: PolicyManager
+    sub_title: PolicyManager
+    sign_out: Logout
+    menu:
+      policies: Policies
+      portability_requests: Portabilität Antrag
+      user_portability_requests: Meine Portabilitäts Anträge
+      user_pending_policies: My pending policies
+    misc:
+      back: Zurück
+      edit: Bearbeiten
+      show: Anzeigen
+      save: Speichern
+      download: Download
+      are_you_sure: Bist du sicher?
+    states:
+      draft: Entwurf
+      published: Veröffentlicht
+    categories:
+      index:
+        title: Policies
+        table:
+          name: Name
+          terms: Terms
+          show: Show
+      show:
+        title: "%{name} Policy"
+        new: New Term
+        table:
+          id: Id
+          content: Content
+          state: State
+          updated_at: Updated at
+          show: Show
+    terms:
+      index:
+        title: Terms
+        button: New Term
+        table:
+          description: Description
+          category: Policy
+          updated_at: Updated at
+          show: Show
+          edit: Edit
+          destroy: Delete
+      new:
+        title: "%{name} new term"
+        state: State
+        description: Description
+        button: Button
+        error: error saving term
+        created: Successfully created
+        updated: Successfully updated
+        destroyed: Successfully deleted
+      edit:
+        title: Edit %{name} term
+        state: State
+        description: Description
+        error: saving term
+      show:
+        title: Term
+        last_update: Last update
+        table:
+          name: Name
+          terms: Terms
+          show: Show
+    user_terms:
+      pending:
+        title: My pending policies
+        empty: There are no pending policies
+      show:
+        accepted:
+          message: Accepted policy
+          question: Change your mind?
+          reject: Reject
+          not_now: No not now
+        pending:
+          message: Please accept this policy
+          agree: Accept
+          not_now: No not now
+    user_portability_requests:
+      index:
+        title: My portability requests
+        empty:  There are no portability requests
+        table:
+          state: State
+          file: File
+          created_at: Created at
+          destroy: Delete
+        button: New portability request
+        states:
+          pending: Pending
+          progress: In progress
+          completed: Completed
+        has_pending: You have one pending information request, you can't create another one yet.
+        created: Information Request Submitted!
+    portability_requests:
+      index:
+        title: Wartende Anträge
+        destroyed: Erfolgreich gelöscht
+        empty: Keine Anträge vorhanden
+        table:
+          user: Benutzer
+          state: Status
+          created_at: Erstellt am 
+          destroy: Löschen
+          confirm: Bestätigen
+        states:
+          pending: Wartet
+          progress: In Arbeit
+          completed: Fertig
+    mails:
+      admin:
+        subject: Benutzer %{email} hat einen Portabilitäts Antrag gestellt
+      progress:
+        subject: Deine Daten werden aufbereitet
+      completed:
+        subject: Deine Daten sind abrufbar
+    documents:
+      portability_request:
+        title: Portabilitäts Antrag
+  will_paginate:
+    previous_label: "&lt;"
+    next_label: "&gt;"
+    page_gap: "&hellip;"

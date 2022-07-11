@@ -5,13 +5,13 @@ module PolicyManager
 
     belongs_to :user, class_name: Config.user_resource.to_s, foreign_key:  :user_id
 
-    #if PolicyManager::Config.paperclip
-    #  include PolicyManager::Concerns::PaperclipBehavior
-    #else
-    #  include PolicyManager::Concerns::ActiveStorageBehavior
-    #end
-
-    include PolicyManager::Concerns::ActiveStorageBehavior
+    if PolicyManager::Config.paperclip
+      include PolicyManager::Concerns::PaperclipBehavior
+    elsif PolicyManager::Config.carrierwave
+      include PolicyManager::Concerns::CarrierwaveBehaviour
+    else
+      include PolicyManager::Concerns::ActiveStorageBehavior
+    end
 
     include AASM
 
@@ -43,14 +43,20 @@ module PolicyManager
     end
 
     def notify_progress
+      return unless PolicyManager::Config.exporter.progress_notification
+      
       PortabilityMailer.progress_notification(self.id).deliver_now
     end
 
     def notify_progress_to_admin
+      return unless PolicyManager::Config.exporter.admin_notification
+
       PortabilityMailer.admin_notification(self.user.id).deliver_now
     end
 
     def notify_completeness
+      return unless PolicyManager::Config.exporter.completed_notification
+      
       PortabilityMailer.completed_notification(self.id).deliver_now
     end
 

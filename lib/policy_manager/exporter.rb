@@ -13,7 +13,11 @@ module PolicyManager
                   :expiration_link,
                   :customize_link,
                   :mailer_templates,
-                  :mailer
+                  :mailer,
+                  :notify_progress_to_admin,
+                  :admin_notification,
+                  :progress_notification,
+                  :completed_notification
 
     def initialize(opts={})
       self.path = opts[:path]
@@ -27,6 +31,9 @@ module PolicyManager
       self.expiration_link = opts[:expiration_link]
       self.customize_link = opts[:customize_link]
       self.mailer_templates = opts[:mailer_templates]
+      self.admin_notification = opts.fetch(:admin_notification, true)
+      self.progress_notification = opts.fetch(:progress_notification, true)
+      self.completed_notification = opts.fetch(:completed_notification, true)
     end
 
     def perform(resource)
