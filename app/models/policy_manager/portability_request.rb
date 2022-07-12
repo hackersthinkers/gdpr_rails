@@ -5,10 +5,10 @@ module PolicyManager
 
     belongs_to :user, class_name: Config.user_resource.to_s, foreign_key:  :user_id
 
-    if PolicyManager::Config.paperclip
-      include PolicyManager::Concerns::PaperclipBehavior
-    elsif PolicyManager::Config.carrierwave
+    if PolicyManager::Config.carrierwave
       include PolicyManager::Concerns::CarrierwaveBehaviour
+    elsif PolicyManager::Config.paperclip
+      #include PolicyManager::Concerns::PaperclipBehavior      
     else
       include PolicyManager::Concerns::ActiveStorageBehavior
     end
@@ -56,7 +56,7 @@ module PolicyManager
 
     def notify_completeness
       return unless PolicyManager::Config.exporter.completed_notification
-      
+
       PortabilityMailer.completed_notification(self.id).deliver_now
     end
 
