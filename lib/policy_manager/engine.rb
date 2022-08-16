@@ -9,7 +9,8 @@ module PolicyManager
       g.helper false
     end
 
-    config.assets.precompile += %w( policy_manager/application.css policy_manager/application.js)
-
+    initializer "gdpr_rails.assets.precompile" do |app|
+      app.config.assets.precompile += %w( policy_manager/application.css policy_manager/application.js)
+    end
   end
 end
